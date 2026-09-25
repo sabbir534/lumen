@@ -270,7 +270,7 @@
   --animate-drift-3: drift-3 30s ease-in-out infinite;
   --animate-popin: popin 0.14s ease-out;
   --animate-floaty: floaty 4s ease-in-out infinite;
-  --animate-floaty-slow: floaty 12s ease-in-out infinite;
+  --animate-floaty-slow: floaty 4s ease-in-out infinite;
   --animate-nav-item: nav-item 0.44s var(--ease-out-soft) both;
   --animate-menu-x-top: menu-x-top 0.32s var(--ease-out-soft) 0.06s both;
   --animate-menu-x-bottom: menu-x-bottom 0.32s var(--ease-out-soft) 0.06s both;
@@ -757,5 +757,52 @@
     overflow: visible !important;
     height: auto !important;
     transform: none !important;
+  }
+}
+
+/* Marketing hero: independent violet, blue, and cyan glows. Theme tokens
+   preserve the reference's subtle light treatment and richer dark treatment. */
+@layer utilities {
+  .hero-grid {
+    background-position: center top;
+    mask-image: linear-gradient(to bottom, #000 0%, #000 64%, transparent 100%);
+  }
+  .hero-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(85px);
+    transform: translateX(-50%);
+  }
+  .hero-glow-violet {
+    top: -60px;
+    left: calc(50% - 390px);
+    width: 490px;
+    height: 490px;
+    background: var(--accent-1);
+    opacity: var(--orb-strong);
+  }
+  .hero-glow-blue {
+    top: -70px;
+    left: calc(50% + 370px);
+    width: 450px;
+    height: 420px;
+    background: var(--accent-2);
+    opacity: var(--orb-soft);
+  }
+  .hero-glow-cyan {
+    top: 330px;
+    left: 50%;
+    width: 390px;
+    height: 350px;
+    background: var(--accent-3);
+    opacity: var(--orb-soft);
+  }
+  .hero-preview { height: auto; }
+  .hero-goal-ring {
+    background: conic-gradient(var(--accent-1) 0% 30%, var(--accent-2) 30% 55%, var(--accent-3) 55% 72%, var(--track) 72% 100%);
+  }
+  @media (max-width: 639px) {
+    .hero-glow-violet { left: 5%; width: 300px; }
+    .hero-glow-blue { left: 100%; width: 280px; }
   }
 }
