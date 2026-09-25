@@ -1,7 +1,8 @@
 import { Figtree, Geist_Mono, Lora } from "next/font/google"
 
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
+import { SiteHeader } from "@/components/marketing/header/site-header"
+import { ThemeProvider } from "@/components/theme/theme-provider"
 import { cn } from "@/lib/utils"
 
 const figtree = Figtree({
@@ -41,7 +42,10 @@ export default function RootLayout({
       )}
     >
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider defaultTheme="light">
+          <SiteHeader />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )
